@@ -487,6 +487,13 @@
         });
 
     }
+    let reaction = () => {
+        $('.like_btn').click(function () {
+            $(this).addClass('_active');
+            $(this).empty();
+            $(this).append('<img src="img/red_heart.svg" alt="">')
+        })
+    }
     let range = () => {
         $(".js-range-slider").ionRangeSlider({
             type: "double",
@@ -527,6 +534,7 @@
             postfix: " мин",
         });
     }
+    reaction();
     range();
     inputs_popup();
     town_serch();
