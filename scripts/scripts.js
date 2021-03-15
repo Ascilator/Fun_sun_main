@@ -260,14 +260,7 @@
         })
 
 
-        $(document).mouseup(function (e) { // событие клика по веб-документу
-            var div = $(".calendar"); // тут указываем ID элемента
-            if (!div.is(e.target) // если клик был не по нашему блоку
-                && div.has(e.target).length === 0 && !$('._calendar_cont').is(e.target) && !$('.datepicker').is(e.target)) { // и не по его дочерним элементам
-                $(".calendar").removeClass('_active'); // скрываем его
-                $(".calendar").slideUp();
-            }
-        });
+
 
         $('.datepicker').click(function () {
             $(this).siblings('.calendar').slideToggle();
@@ -471,13 +464,15 @@
             $('.town_list_main').removeClass('_active');
 
         })
+        $('.magic_filter_cont').siblings('.cross').on('click', function () {
+            $('.magic_filter_cont').parent().removeClass('_active');
+        });
         $('.town_item_main').click(function () {
             $('.town_list_main').removeClass('_active');
             $('.where_to_search').val($(this).text());
         })
-        $('.search>.img').click(function () {
-            $('.search_body').toggleClass('_active');
-
+        $('.search>.img').on('click', function () {
+            $(".search_body").toggleClass('_active');
         })
         $('._magic_filter').on('focus', function () {
             $(this).parent().siblings('.drop_body_filter').addClass('_active');
@@ -490,13 +485,7 @@
                 $(".drop_body_filter").removeClass('_active'); // скрываем его
             }
         });
-        $(document).mouseup(function (e) { // событие клика по веб-документу
-            var div = $(".search_body"); // тут указываем ID элемента
-            if (!div.is(e.target) // если клик был не по нашему блоку
-                && div.has(e.target).length === 0) { // и не по его дочерним элементам
-                $(".search_body").removeClass('_active'); // скрываем его
-            }
-        });
+
     }
     let range = () => {
         $(".js-range-slider").ionRangeSlider({
